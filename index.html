@@ -1,87 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Vionix - Privacy Policy</title>
-<style>
-    body {
-        max-width: 900px;
-        margin: auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #222;
-    }
-    h1, h2 {
-        color: #4b0082;
-    }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VIONIX — Privacy Policy</title>
+  <style>
+    :root{--bg:#0f0f10;--card:#121214;--accent:#6b39ff;--text:#EEE;}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#080808 0%,#0f0f10 100%);color:var(--text);line-height:1.5}
+    .wrap{max-width:900px;margin:40px auto;padding:28px;background:rgba(255,255,255,0.02);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    h1{margin:0 0 14px;color:#FFF}
+    h2{margin-top:20px;color:#fff}
+    p{margin:10px 0;color:#dcdcdc}
+    ul{margin:8px 0 12px 20px;color:#d0d0d0}
+    code{background:rgba(255,255,255,0.03);padding:3px 6px;border-radius:6px;color:#fff}
+    .note{font-size:13px;color:#bdbdbd;background:rgba(255,255,255,0.02);padding:8px;border-radius:8px;margin-top:12px}
+    a{color:var(--accent);text-decoration:none}
+    footer{margin-top:26px;font-size:13px;color:#aaa}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <h1>VIONIX — Privacy Policy</h1>
+    <p>Last updated: <strong>18 November 2025</strong></p>
 
-<h1>VIONIX – Privacy Policy</h1>
-<p><strong>Last Updated:</strong> November 2025</p>
+    <h2>Overview</h2>
+    <p>
+      VIONIX (the “App”) is a device optimization, storage inspector and privacy utility.  
+      Core features include: system optimization helpers, storage breakdown (apps / images / videos / audio / system), a DNS-based Guard (VPN) mode (DNS-only), a weekly summary, and curated cyber threats headlines.
+    </p>
 
-<p>Vionix (“the App”) is developed by <strong>Avince Developers</strong> (“we”, “us”).  
-This Privacy Policy explains how the App handles user data.</p>
+    <h2>Contact</h2>
+    <p>If you need to contact the developer for privacy questions, data-deletion requests or support:</p>
+    <ul>
+      <li>Developer: Prince Tiwari</li>
+      <li>Email: <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a></li>
+      <li>GitHub: <a href="https://github.com/princetiwari11">github.com/princetiwari11</a></li>
+    </ul>
 
-<h2>1. Data We Do NOT Collect</h2>
-<p>Vionix does NOT collect, store, upload, or share:</p>
-<ul>
-    <li>Personal information</li>
-    <li>Location history</li>
-    <li>Photos, videos, or audio files</li>
-    <li>Contacts or messages</li>
-    <li>Browsing history</li>
-    <li>User identifiers</li>
-    <li>Analytics or advertising data</li>
-</ul>
+    <h2>Data we access / collect and why</h2>
+    <p>The table below describes each permission used by the app (matching the app manifest) and the reason it's required.</p>
 
-<h2>2. Data Processed Locally (On Device Only)</h2>
-<p>The App accesses certain data strictly on the device and never sends it anywhere.</p>
+    <h3>Network & remote content</h3>
+    <ul>
+      <li><strong>Internet (android.permission.INTERNET)</strong> — Required to fetch threat headlines, weather data (optional), update checks, and to reach external DNS resolvers when Guard VPN (DNS) mode is active. Networking is performed over HTTPS where possible.</li>
+    </ul>
 
-<h3>a. Storage Media (Photos, Videos, Audio)</h3>
-<p>Used only to calculate storage usage and categorize files.  
-Never uploaded, stored, or shared.</p>
+    <h3>Files, media & storage</h3>
+    <ul>
+      <li><strong>READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO, READ_EXTERNAL_STORAGE</strong> — Used only to show local storage breakdown and preview media inside the app Storage views. These are optional and requested at runtime. The app only reads file metadata and sizes to build the storage report. It does not upload your media to any server.</li>
+      <li><strong>WRITE_EXTERNAL_STORAGE (legacy, maxSdkVersion=28)</strong> — Present for older device compatibility; not required on modern Android versions that use scoped storage. Not used to upload user content anywhere.</li>
+      <li><strong>MANAGE_DOCUMENTS</strong> — Used only to access file picker / document providers if the user explicitly chooses to open files via document UI.</li>
+    </ul>
 
-<h3>b. Installed Apps List (QUERY_ALL_PACKAGES)</h3>
-<p>Used to analyze app storage usage and device performance.  
-Allowed for device optimization apps.  
-Not uploaded or shared.</p>
+    <h3>Location</h3>
+    <ul>
+      <li><strong>ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION</strong> — Only used if you explicitly enable the optional Weather feature. Location usage is optional: the app will not collect or use location unless you grant it. Location is used locally to request weather forecasts for your area from a 3rd-party weather API (over HTTPS).</li>
+    </ul>
 
-<h3>c. Location (Optional)</h3>
-<p>Used only for the weather feature.  
-Not stored or shared.  
-Users can deny the permission.</p>
+    <h3>Installed apps, usage & system info</h3>
+    <ul>
+      <li><strong>QUERY_ALL_PACKAGES</strong> — Used to enumerate installed apps for the storage & app-management UI (to list installed packages and allow actions such as viewing app storage). This data is processed locally and is not sent to the developer or third parties. This permission is required for the app’s core optimizer/guard features.</li>
+      <li><strong>PACKAGE_USAGE_STATS</strong> — Used to show app usage metrics (for storage / performance recommendations). This is an OS-level permission that the user must grant via the Usage Access settings. The app only reads aggregated usage stats (time used, foreground time) to aid optimization; it does not send your usage history to external servers.</li>
+    </ul>
 
-<h2>3. VPN Disclosure</h2>
-<p>Vionix uses Android's local VPNService to enable security features.</p>
-<p><strong>The VPN does NOT:</strong></p>
-<ul>
-    <li>Send traffic to external servers</li>
-    <li>Log network activity</li>
-    <li>Inspect or store traffic</li>
-    <li>Share user data</li>
-</ul>
-<p>All processing happens locally on the device.</p>
+    <h3>Foreground service, notifications & alarms</h3>
+    <ul>
+      <li><strong>FOREGROUND_SERVICE, FOREGROUND_SERVICE_VPN, FOREGROUND_SERVICE_DATA_SYNC</strong> — Required to run the Guard VPN service (VPN-mode) and any background tasks that must remain active while visible to the user. Foreground services show a persistent notification so users know the service is running.</li>
+      <li><strong>POST_NOTIFICATIONS</strong> — Required to show app notifications (weekly summary and performance alerts). Android 13+ users must grant this at runtime.</li>
+      <li><strong>SCHEDULE_EXACT_ALARM</strong> — Used optionally for scheduled tasks (weekly summary generation or precise widget refresh). Exact alarms are used only when the user opts in to scheduled features.</li>
+    </ul>
 
-<h2>4. No Data Sharing</h2>
-<p>The App does not share any user data with any third party.</p>
+    <h3>Other</h3>
+    <ul>
+      <li><strong>QUERY / Broadcast intents</strong> — The manifest contains queries for common intents (MAIN, VIEW, PACKAGE_ADDED) to correctly handle links & package events. These are standard and used only to improve user experience.</li>
+    </ul>
 
-<h2>5. Data Retention</h2>
-<p>We retain no personal data. All temporary processing stays on the device.</p>
+    <h2>What the Guard VPN (DNS-only) does — and does NOT do</h2>
+    <p>
+      The Guard feature uses a local Android VPN service to intercept DNS queries and forward them to the configured DNS resolver. Important facts:
+    </p>
+    <ul>
+      <li><strong>DNS-only</strong> — Guard does not perform traffic blocking, DPI, or content inspection. It only redirects DNS queries to the selected DNS service.</li>
+      <li><strong>No DNS logging by default</strong> — VIONIX does not collect or store DNS queries on the developer servers. DNS resolution is performed by the remote DNS resolver you choose (for example, a public DNS provider). Please review the chosen DNS provider’s privacy policy if you use a third-party resolver.</li>
+      <li><strong>Local routing & privacy</strong> — The VPN service runs on the device and the app displays a clear persistent notification while it runs. You may stop the service any time from the app UI or Android system settings.</li>
+    </ul>
 
-<h2>6. Data Deletion</h2>
-<p>Since no data is stored, uninstalling the app removes all temporary cache.</p>
+    <h2>Data sharing & third parties</h2>
+    <p>
+      VIONIX does not sell or rent personal data. Third parties are only contacted for:
+    </p>
+    <ul>
+      <li>Threat headlines (public RSS/feeds) — remote servers that provide the news feed.</li>
+      <li>Weather API — remote provider if you enable weather; this request uses the location you allow.</li>
+      <li>App updates (Google Play / AAB) — update checks use Play infrastructure.</li>
+    </ul>
+    <p>When contacting external services, we use HTTPS and follow best-effort practices to secure data in transit.</p>
 
-<h2>7. Children’s Privacy</h2>
-<p>The app is not designed for children under 13. No child data is collected.</p>
+    <h2>Is data encrypted in transit?</h2>
+    <p>Yes — network calls to third-party services and our servers are made over TLS/HTTPS where supported. Any sensitive data transmitted uses encrypted connections.</p>
 
-<h2>8. Contact</h2>
-<p>If you have questions, contact:</p>
-<p>Email: <strong>princetiwari1@proton.me</strong></p>
-<p>Developer: <strong>Prince Tiwari (Avince Developers)</strong></p>
+    <h2>Retention, deletion & user controls</h2>
+    <ul>
+      <li><strong>Local-only by default:</strong> Most data (installed-app lists, storage size, usage stats) is processed and stored only on the device.</li>
+      <li><strong>Request deletion:</strong> If any data associated with your account or device is stored remotely (only happens with explicit user actions), you can request deletion: email <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a>. We will respond within 30 days.</li>
+      <li><strong>Automatic retention:</strong> Temporary activity logs (app’s local activity log, weekly stats) are stored on-device and cleared when you uninstall or when you explicitly reset app data via Settings → Reset All Settings.</li>
+    </ul>
 
+    <h2>Children</h2>
+    <p>VIONIX is not targeted at children under 13. If a parent believes their child’s data has been collected, contact us at <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a> and we will promptly delete that data.</p>
+
+    <h2>Security</h2>
+    <p>We take reasonable administrative and technical measures to protect data stored by the app. However, no transmission or storage system is 100% secure — please use the privacy settings available in your device and the app to limit what is shared.</p>
+
+    <h2>Legal & GDPR / Data subject rights</h2>
+    <p>If you are located in the EEA/UK, you have rights to access, correct, and delete personal data. Contact <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a> to exercise these rights. We will comply with applicable laws.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. We will update the “Last updated” date and post the revised policy on this page. We recommend checking this page before you grant new permissions to the app.</p>
+
+    <div class="note">
+      <strong>Short summary for Play Console reviewers:</strong> The app only requests permissions strictly required for its features. Media & location are optional and requested at runtime. Installed app & usage stats are used locally for storage & optimization features. Guard VPN is DNS-only and does not log DNS queries on developer servers by default.
+    </div>
+
+    <footer>
+      <p>Hosted by: <a href="https://github.com/princetiwari11">Princetiwari (GitHub)</a> • Contact: <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a></p>
+    </footer>
+  </div>
 </body>
 </html>
