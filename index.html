@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VIONIX — Privacy Policy</title>
+
   <style>
     :root { --bg:#0f0f10; --card:#121214; --accent:#6b39ff; --text:#EEE; }
     body {
@@ -29,21 +30,22 @@
     footer{margin-top:26px;font-size:13px;color:#aaa;}
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    
+
     <h1>VIONIX — Privacy Policy</h1>
     <p>Last updated: <strong>18 November 2025</strong></p>
 
     <h2>1. Overview</h2>
     <p>
-      VIONIX (“the App”) is a device optimization and privacy utility. 
-      Features include system performance tools, a storage analyzer (apps / media / system), 
-      DNS-based Guard Mode (local VPN), a weekly summary, and cybersecurity news.
+      VIONIX (“the App”) is a device optimization and privacy utility.  
+      Features include storage analysis, app usage insights, optional weather location,  
+      DNS-based Guard Mode (local VPN), and cybersecurity headlines.
     </p>
 
     <h2>2. Contact</h2>
-    <p>For privacy questions, data deletion, or support:</p>
+    <p>For support, privacy questions or data deletion requests:</p>
     <ul>
       <li>Developer: Prince Tiwari (Avince Developers)</li>
       <li>Email: <a href="mailto:princetiwari1@proton.me">princetiwari1@proton.me</a></li>
@@ -51,89 +53,97 @@
     </ul>
 
     <h2>3. Permissions & Data Usage</h2>
-    <p>The app requests only the permissions necessary for core features. 
-       No data is collected or shared unless explicitly stated.</p>
+    <p>The app uses only the permissions required for its features.  
+       All processing happens locally on your device unless explicitly stated.</p>
 
     <h3>3.1 Internet</h3>
     <ul>
-      <li><strong>android.permission.INTERNET</strong> — Used for cybersecurity news, weather, and DNS resolution in Guard Mode.</li>
+      <li><strong>INTERNET</strong> — Used for cybersecurity news, weather (optional), and secure DNS resolution in Guard Mode.</li>
     </ul>
 
-    <h3>3.2 Media</h3>
+    <h3>3.2 Media (Storage Analyzer)</h3>
     <ul>
-      <li><strong>READ_MEDIA_IMAGES / VIDEO / AUDIO</strong> — Used to calculate media storage size. Only metadata (size, count) is used.</li>
-      <li><strong>READ_EXTERNAL_STORAGE</strong> — For older devices only. Used for the same purpose.</li>
+      <li><strong>READ_MEDIA_IMAGES / VIDEO / AUDIO</strong> — Reads media size/count to display storage usage.</li>
+      <li><strong>READ_EXTERNAL_STORAGE</strong> — Needed only on Android 12 and below for the same purpose.</li>
+      <li>No media (images/videos/audio) is uploaded or shared.</li>
     </ul>
 
-    <h3>3.3 Location</h3>
+    <h3>3.3 Location (Optional Feature)</h3>
     <ul>
-      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> — Used <strong>only for the optional Weather feature</strong>. The app does not store location.</li>
+      <li><strong>ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION</strong> — Used only for the optional Weather card.</li>
+      <li>Location is not stored or shared.</li>
     </ul>
 
     <h3>3.4 Installed Apps & Usage</h3>
     <ul>
-      <li><strong>QUERY_ALL_PACKAGES</strong> — Required for the Storage Analyzer to show system/user installed apps. Processed locally only.</li>
-      <li><strong>PACKAGE_USAGE_STATS</strong> — Used to show app usage and performance suggestions. Data never leaves the device.</li>
+      <li><strong>QUERY_ALL_PACKAGES</strong> — Needed to list installed apps inside the Storage/Apps section.</li>
+      <li><strong>PACKAGE_USAGE_STATS</strong> — Used for app usage time and performance insights.  
+          Requires explicit user permission in system settings.</li>
+      <li>All data stays on-device and is never uploaded.</li>
     </ul>
 
     <h3>3.5 Foreground Services & Notifications</h3>
     <ul>
-      <li><strong>FOREGROUND_SERVICE</strong> — Required for persistent background execution.</li>
-      <li><strong>FOREGROUND_SERVICE_VPN</strong> — Required for Guard Mode (local VPN service).</li>
-      <li><strong>POST_NOTIFICATIONS</strong> — Needed to show active Guard Mode notification.</li>
+      <li><strong>FOREGROUND_SERVICE</strong> — Enables persistent background execution.</li>
+      <li><strong>FOREGROUND_SERVICE_VPN</strong> — Required by Android for any VpnService.</li>
+      <li><strong>FOREGROUND_SERVICE_DATA_SYNC</strong> — Declared for Guard Mode compatibility.</li>
+      <li><strong>POST_NOTIFICATIONS</strong> — Required on Android 13+ to show the persistent Guard Mode notification.</li>
     </ul>
 
-    <h2>4. Guard VPN (DNS-only)</h2>
-    <p>The Guard Mode uses Android’s VpnService to provide secure DNS routing.</p>
+    <h2>4. Guard Mode (DNS-Only Local VPN)</h2>
+    <p>Guard Mode uses Android’s built-in <strong>VpnService</strong> to route DNS queries securely.</p>
     <ul>
-      <li>Does <strong>not</strong> monitor, track, or inspect traffic.</li>
-      <li>Does <strong>not</strong> block content unless user adds domains manually.</li>
-      <li>Does <strong>not</strong> log DNS queries.</li>
-      <li>Uses Cloudflare or system DNS resolvers — no developer server involved.</li>
-      <li>Everything is processed <strong>locally on device</strong>.</li>
+      <li>It does <strong>not</strong> inspect or monitor internet traffic.</li>
+      <li>It does <strong>not</strong> create a real VPN tunnel or proxy your data.</li>
+      <li>It does <strong>not</strong> log DNS queries.</li>
+      <li>It only forwards DNS requests to the system DNS or Cloudflare DoH.</li>
+      <li>All processing happens locally on the device.</li>
+      <li>The persistent notification clearly indicates when Guard Mode is active.</li>
     </ul>
 
     <h2>5. Data We Do NOT Collect</h2>
-    <p>VIONIX does <strong>not</strong> collect:</p>
+    <p>VIONIX does not collect or store:</p>
     <ul>
       <li>Personal information</li>
-      <li>App usage history</li>
+      <li>Browsing history or VPN activity</li>
+      <li>App content, photos, videos, or files</li>
       <li>Location history</li>
-      <li>Contacts, messages, photos</li>
-      <li>Identifiers or analytics data</li>
-      <li>VPN traffic or browsing data</li>
-      <li>Installed apps list (never uploaded)</li>
+      <li>Installed apps list (not uploaded)</li>
+      <li>Analytics or device identifiers</li>
     </ul>
 
     <h2>6. Third-Party Sharing</h2>
-    <p>The app does not share any data with third parties.  
-       External services are contacted only for:</p>
+    <p>No user data is shared or sold.</p>
+    <p>The app contacts outside servers only for:</p>
     <ul>
-      <li>Cybersecurity news (public RSS feed)</li>
-      <li>Weather (if enabled)</li>
+      <li>Cybersecurity headlines (RSS feed)</li>
+      <li>Weather data (if location is granted)</li>
     </ul>
 
     <h2>7. Encryption</h2>
-    <p>All outbound traffic (weather/news/DNS) uses encrypted HTTPS or DoH where available.</p>
+    <p>All network communication uses encrypted HTTPS and DNS-over-HTTPS where supported.</p>
 
     <h2>8. Data Retention & Deletion</h2>
     <ul>
-      <li>App data stays on-device and is deleted when the user uninstalls the app.</li>
-      <li>No personal data is stored on servers.</li>
-      <li>Users may request deletion of any voluntarily provided data via email.</li>
+      <li>No personal data is stored remotely.</li>
+      <li>All local app data is removed when you uninstall the app.</li>
+      <li>You may request deletion of any optional data via email.</li>
     </ul>
 
     <h2>9. Children’s Privacy</h2>
-    <p>The app is not intended for children under 13 and does not collect data from children.</p>
+    <p>The app is not designed for children under 13 and does not knowingly collect child data.</p>
 
-    <h2>10. Changes</h2>
-    <p>We may update this policy for legal or functional reasons. The date above will be updated accordingly.</p>
+    <h2>10. Policy Changes</h2>
+    <p>Updates may be made for feature or legal reasons.  
+       The “Last updated” date will reflect any changes.</p>
 
     <div class="note">
-      <strong>Reviewer Note:</strong>  
-      All permissions directly match the app manifest.  
-      Media, location, and usage stats are optional and used only for on-device features.  
-      Guard Mode is DNS-only, no traffic inspection or logging.
+      <strong>Google Play Reviewer Note:</strong><br>
+      All permissions directly match the manifest:
+      INTERNET, MEDIA, LOCATION, QUERY_ALL_PACKAGES, PACKAGE_USAGE_STATS,  
+      FOREGROUND_SERVICE / VPN / DATA_SYNC, and POST_NOTIFICATIONS.<br><br>
+      Guard Mode is DNS-only, does not log, does not proxy traffic, and  
+      does not inspect user data. All processing stays on the device.
     </div>
 
     <footer>
